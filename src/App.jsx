@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
+
 import "./App.css";
 
 function App() {
@@ -37,7 +39,7 @@ function App() {
   return (
     <>
       <div id="Container">
-        <div id="firstContainer">
+        <div id="selectContainer">
           <label>Select Categories :</label>
           <select
             value={selectedCategory}
@@ -49,13 +51,16 @@ function App() {
               </option>
             ))}
           </select>
+        </div>
+        <div id="inputContainer">
           <input
             type="text"
             placeholder="Search Meals"
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+          <FaSearch />
         </div>
-        <div id="displayContainer">
+        <div id="mealContainer">
           {filteredItem.map((meal) => (
             <div key={meal.idMeal}>
               <p>{meal.strMeal}</p>
