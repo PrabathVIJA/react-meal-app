@@ -39,6 +39,9 @@ function App() {
   return (
     <>
       <div id="Container">
+        <div id="titleContainer">
+          <h2>Meal Finder</h2>
+        </div>
         <div id="selectContainer">
           <label>Select Categories :</label>
           <select
