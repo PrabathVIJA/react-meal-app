@@ -25,13 +25,11 @@ function App() {
           throw new Error("Requested Category not found");
         }
         const categoryList = await res.json();
-        console.log(categoryList);
 
         setCategories(categoryList.meals);
         toast.info("fetching data from api");
       } catch (e) {
         toast.error(e.message);
-        return;
       }
     }
     fetchMealCategories();
@@ -55,7 +53,6 @@ function App() {
         setMeals(item.meals || []);
       } catch (e) {
         toast.error(e.message);
-        return;
       }
     }
     fetchItem();
@@ -92,7 +89,9 @@ function App() {
               placeholder="Search Meals"
               inputHandler={inputHandler}
             />
-            <FaSearch />
+            <button aria-label="Search">
+              <FaSearch />
+            </button>
           </div>
         </div>
         <div id="mealContainer">
