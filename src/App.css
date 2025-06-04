@@ -1,0 +1,84 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #fec196; /* Optional: to avoid white gaps */
+}
+
+#Container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fec196;
+}
+
+#titleContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: 200;
+  color: black;
+}
+
+#searchContainer {
+  width: 100vw;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+#dropDownContainer {
+  margin-right: 5px;
+}
+
+#dropDownContainer label {
+  font-size: medium;
+}
+
+#dropDownContainer select {
+  width: 125px;
+  height: 25px;
+  font-size: 15px;
+  padding: 2px 7px;
+}
+#inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 25px;
+}
+
+#inputContainer input {
+  height: 18px;
+  font-size: 15px;
+  padding: 2px 7px;
+}
+
+#inputContainer svg {
+  font-size: 18px; /* Adjust icon size */
+  cursor: pointer; /* Optional: hover effect */
+}
+#mealContainer {
+  width: 75vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mealCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+  color: black;
+}
+img {
+  margin-top: 5px;
+  margin-left: 5px;
+  border: 3px solid white;
+  width: 180px;
+  height: 150px;
+}

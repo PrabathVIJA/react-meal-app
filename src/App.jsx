@@ -42,37 +42,39 @@ function App() {
         <div id="titleContainer">
           <h2>Meal Finder</h2>
         </div>
-        <div id="selectContainer">
-          <label>Select Categories :</label>
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            {Categories.map((cat) => (
-              <option key={cat.strCategory} value={cat.strCategory}>
-                {cat.strCategory}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div id="inputContainer">
-          <input
-            type="text"
-            placeholder="Search Meals"
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <FaSearch />
+        <div id="searchContainer">
+          <div id="dropDownContainer">
+            <label>Select Categories :</label>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              {Categories.map((cat) => (
+                <option key={cat.strCategory} value={cat.strCategory}>
+                  {cat.strCategory}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div id="inputContainer">
+            <input
+              type="text"
+              placeholder="Search Meals"
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <FaSearch />
+          </div>
         </div>
         <div id="mealContainer">
           {filteredItem.map((meal) => (
-            <div key={meal.idMeal}>
-              <p>{meal.strMeal}</p>
+            <div className="mealCard" key={meal.idMeal}>
               <img
                 src={meal.strMealThumb}
                 alt={meal.strMeal}
                 width="250"
                 height="300"
               />
+              <p>{meal.strMeal}</p>
             </div>
           ))}
         </div>
