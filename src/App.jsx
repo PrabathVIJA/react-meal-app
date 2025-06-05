@@ -75,7 +75,6 @@ function App() {
         <div id="titleContainer">
           <Title title="Meal Finder" />
         </div>
-
         <div id="searchContainer">
           <Dropdown
             label="Select Categories :"
