@@ -13,6 +13,7 @@ function App() {
   const [Categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedMeals, setSelectedMeals] = useState([]);
 
   // Fetch all meal categories on first mount
   useEffect(() => {
@@ -69,13 +70,37 @@ function App() {
     setSearchQuery(e);
   }
 
+  function selectMealHandler(meal) {
+    const isAlreadyThere = selectedMeals.some(
+      (selectedMeal) => selectedMeal.idMeal === meal.idMeal
+    );
+    if (!isAlreadyThere) {
+      setSelectedMeals((prevMeals) => [...prevMeals, meal]);
+      toast.info(`${meal.strMeal} added`);
+    } else {
+      toast.info(`${meal.strMeal} alread added before`);
+    }
+    setSearchQuery("");
+
+    // console.log(selectedMeals);
+  }
+
   return (
     <>
       <div id="Container">
         <div id="titleContainer">
           <Title title="Meal Finder" />
         </div>
-        <div id="selectedMealCo"></div>
+        <div id="selectedMealContainer">
+          {selectedMeals.map((selectedMeal) => (
+            <MealItem
+              key={selectedMeal.idMeal}
+              meal={selectedMeal}
+              width="250"
+              height="300"
+            />
+          ))}
+        </div>
         <div id="searchContainer">
           <Dropdown
             label="Select Categories :"
@@ -86,6 +111,7 @@ function App() {
           <div id="inputContainer">
             <Input
               type="text"
+              value={searchQuery}
               placeholder="Search Meals"
               inputHandler={inputHandler}
             />
@@ -96,7 +122,13 @@ function App() {
         </div>
         <div id="mealContainer">
           {filteredItem.map((meal) => (
-            <MealItem key={meal.idMeal} meal={meal} width="250" height="300" />
+            <MealItem
+              key={meal.idMeal}
+              meal={meal}
+              width="250"
+              height="300"
+              selectHandler={selectMealHandler}
+            />
           ))}
         </div>
       </div>

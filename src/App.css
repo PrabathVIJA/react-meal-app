@@ -85,3 +85,9 @@ img {
   width: 180px;
   height: 150px;
 }
+
+#selectedMealContainer {
+  /* width: 75vw; */
+  display: flex;
+  flex-wrap: wrap;
+}
