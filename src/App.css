@@ -4,13 +4,16 @@ html {
   padding: 0;
   background-color: #fec196; /* Optional: to avoid white gaps */
 }
+* {
+  box-sizing: border-box;
+}
 
 #Container {
   width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   background-color: #fec196;
 }
