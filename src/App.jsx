@@ -15,6 +15,20 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMeals, setSelectedMeals] = useState([]);
 
+  // for getting data from localStorage
+  useEffect(() => {
+    const savedmeals = JSON.parse(localStorage.getItem("react-selected-meals"));
+
+    if (savedmeals) {
+      toast.info("Fetching data from local storage...");
+      setSelectedMeals(savedmeals);
+    }
+  }, []);
+
+  // writing into local storage
+  useEffect(() => {
+    localStorage.setItem("react-selected-meals", JSON.stringify(selectedMeals));
+  }, [selectedMeals]);
   // Fetch all meal categories on first mount
   useEffect(() => {
     async function fetchMealCategories() {
@@ -66,8 +80,15 @@ function App() {
   function categoryHandler(value) {
     setSelectedCategory(value);
   }
-  function inputHandler(e) {
-    setSearchQuery(e);
+  function inputHandler(value) {
+    setSearchQuery(value);
+  }
+  //Delete meal handler
+  function deleteMealItemhandler(id) {
+    const updatedMeals = selectedMeals.filter(
+      (selectedMeal) => selectedMeal.idMeal !== id
+    );
+    setSelectedMeals(updatedMeals);
   }
 
   function selectMealHandler(meal) {
@@ -78,7 +99,7 @@ function App() {
       setSelectedMeals((prevMeals) => [...prevMeals, meal]);
       toast.info(`${meal.strMeal} added`);
     } else {
-      toast.info(`${meal.strMeal} alread added before`);
+      toast.info(`${meal.strMeal} already added before`);
     }
     setSearchQuery("");
 
@@ -96,8 +117,9 @@ function App() {
             <MealItem
               key={selectedMeal.idMeal}
               meal={selectedMeal}
-              width="250"
-              height="300"
+              width="170"
+              height="200"
+              deleteHandler={deleteMealItemhandler}
             />
           ))}
         </div>
