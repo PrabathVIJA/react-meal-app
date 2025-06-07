@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -73,9 +73,15 @@ function App() {
     fetchItem();
   }, [selectedCategory]);
 
-  const filteredItem = meals.filter((meal) =>
-    meal.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filteredItem = meals.filter((meal) =>
+  //   meal.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredItem = useMemo(() => {
+    return meals.filter((meal) =>
+      meal.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, meals]);
 
   function categoryHandler(value) {
     setSelectedCategory(value);
