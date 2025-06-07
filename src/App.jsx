@@ -108,8 +108,6 @@ function App() {
       toast.info(`${meal.strMeal} already added before`);
     }
     setSearchQuery("");
-
-    // console.log(selectedMeals);
   }
 
   return (
