@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -86,9 +86,13 @@ function App() {
   function categoryHandler(value) {
     setSelectedCategory(value);
   }
-  function inputHandler(value) {
-    setSearchQuery(value);
-  }
+  // function inputHandler(value) {
+  //   setSearchQuery(value);
+  // }
+
+  const inputHandler = useCallback((value) => {
+    setSearchQuery(value); //input Handler using usecallback function
+  }, []);
   //Delete meal handler
   function deleteMealItemhandler(id) {
     const updatedMeals = selectedMeals.filter(
