@@ -65,7 +65,7 @@ html {
   cursor: pointer; /* Optional: hover effect */
 }
 #mealContainer {
-  width: 75vw;
+  width: 85vw;
   display: flex;
   justify-content: center;
   align-items: center;
