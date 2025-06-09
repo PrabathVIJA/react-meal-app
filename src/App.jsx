@@ -15,6 +15,7 @@ function App() {
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMeals, setSelectedMeals] = useState([]);
+  const [loadingMeals, setLoadingMeals] = useState(false);
 
   // for getting data from localStorage
   useEffect(() => {
@@ -54,6 +55,7 @@ function App() {
   // Fetch meals from selected category
   useEffect(() => {
     async function fetchItem() {
+      setLoadingMeals(true);
       try {
         const data = await fetch(
           `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`
@@ -69,6 +71,8 @@ function App() {
         setMeals(item.meals || []);
       } catch (e) {
         toast.error(e.message);
+      } finally {
+        setLoadingMeals(false);
       }
     }
     fetchItem();
@@ -152,15 +156,19 @@ function App() {
           </div>
         </div>
         <div id="mealContainer">
-          {filteredItem.map((meal) => (
-            <MealItem
-              key={meal.idMeal}
-              meal={meal}
-              width="250"
-              height="300"
-              selectHandler={selectMealHandler}
-            />
-          ))}
+          {loadingMeals ? (
+            <ClipLoader color="#000" size={50} />
+          ) : (
+            filteredItem.map((meal) => (
+              <MealItem
+                key={meal.idMeal}
+                meal={meal}
+                width="250"
+                height="300"
+                selectHandler={selectMealHandler}
+              />
+            ))
+          )}
         </div>
       </div>
       <ToastContainer position="top-right" autoClose={1000} />
