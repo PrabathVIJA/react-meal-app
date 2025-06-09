@@ -84,7 +84,7 @@ function App() {
 
   const filteredItem = useMemo(() => {
     return meals.filter((meal) =>
-      meal.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
+      meal.strMeal.toLowerCase().includes(searchQuery.trim().toLowerCase())
     );
   }, [searchQuery, meals]);
 
