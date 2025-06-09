@@ -7,6 +7,7 @@ import Title from "./components/Title.jsx";
 import Dropdown from "./components/Dropdown.jsx";
 import Input from "./components/Input.jsx";
 import MealItem from "./components/MealItem.jsx";
+import { ClipLoader } from "react-spinners";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("Seafood");
