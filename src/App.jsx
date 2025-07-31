@@ -17,7 +17,6 @@ function App() {
   const [selectedMeals, setSelectedMeals] = useState([]);
   const [loadingMeals, setLoadingMeals] = useState(false);
 
-  // for getting data from localStorage
   useEffect(() => {
     const savedmeals = JSON.parse(localStorage.getItem("react-selected-meals"));
 
