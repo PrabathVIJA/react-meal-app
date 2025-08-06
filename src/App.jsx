@@ -16,6 +16,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMeals, setSelectedMeals] = useState([]);
   const [loadingMeals, setLoadingMeals] = useState(false);
+  console.log();
 
   useEffect(() => {
     const savedmeals = JSON.parse(localStorage.getItem("react-selected-meals"));
